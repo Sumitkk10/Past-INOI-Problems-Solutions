@@ -21,7 +21,7 @@ using namespace std;
 #define mmin(x,i) x = min(x,i)
 
 ll n;
-vector<pair<ll,ll>> adj[235];
+vector<pair<ll,ll>> adj[236];
 
 ll dijkstra(ll s){
 
