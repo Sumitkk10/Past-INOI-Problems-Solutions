@@ -64,9 +64,6 @@ ll dijkstra(ll s){
 
 int main() {
 
-	//freopen("input.txt","r",stdin);
-	//freopen("output.txt","w",stdout);
-
 	ll m;
 	cin in n in m;
 	
