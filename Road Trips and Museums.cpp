@@ -33,10 +33,7 @@ void dfs(ll s) {
 }
 
 int main() {
-
-	//freopen("input.txt", "r", stdin);
-	//freopen("output.txt", "w", stdout);
-
+	
 	tc{
 		ll n, m, k;
 		cin in n in m in k;
