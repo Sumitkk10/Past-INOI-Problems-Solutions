@@ -37,7 +37,7 @@ int main() {
 	ll n, k;
 	cin in n in k;
 
-	vector<ll> id[n+5];
+	vector<ll> id[305];
 
 	fo(i, 0, n - 1) {
 		ll x;
