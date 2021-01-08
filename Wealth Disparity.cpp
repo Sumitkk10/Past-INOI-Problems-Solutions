@@ -21,10 +21,10 @@ typedef long long int ll;
 #define mmin(x,i) x = min(x,i)
 
 vector<bool> visited(105, false);
-vi child[105];
-vi maxdp(105, -INF);
-vi mindp(105, INF);
-vi wealth(105);
+vi child[100005];
+vi maxdp(100005, -INF);
+vi mindp(100005, INF);
+vi wealth(100005);
 
 void dfs(ll s) {
 
