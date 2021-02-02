@@ -1,3 +1,81 @@
+// Easy Method , DFS :
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+#define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+typedef long long int ll;
+#define tc ll test;cin >> test;while(test--)
+#define vi vector<ll>
+#define pb push_back
+#define mp make_pair
+#define INF 0x3f3f3f3f3f
+#define MOD 7
+#define ff first
+#define ss second
+#define in >>
+#define out <<
+#define space << " " <<
+#define spacef << " "
+#define fo(i,a,b) for(ll i = a; i <= b; i++)
+#define nextline out "\n"
+#define print(x) for(auto i : x ) cout out i spacef;
+#define mmax(x,i) x = max(x,i)
+#define mmin(x,i) x = min(x,i)
+
+vi children[100005];
+vector<bool> visited(100005);
+vi wealth(100005);
+ll maxdiff = -INF;
+
+
+ll dfs(ll s){
+
+    if(visited[s] == true) return INF;
+    visited[s] = true;
+
+    ll mininsubtreeofs = INF;
+
+    if(children[s].size() == 0) return wealth[s];
+    else{
+        for(auto u : children[s]){
+            mmin(mininsubtreeofs,wealth[u]);
+            mmin(mininsubtreeofs,dfs(u));
+        }
+    }
+
+    mmax(maxdiff,wealth[s]-mininsubtreeofs);
+
+    return mininsubtreeofs;
+}
+
+int main() {
+
+    ll n;
+    cin in n;
+
+    fo(i,0,n-1) cin in wealth[i];
+
+    ll boss;
+
+    fo(i,0,n-1) {
+        ll x;
+        cin in x;
+
+        if(x == -1) boss = i;
+        else children[x-1].pb(i);
+    }
+
+    dfs(boss);
+
+    cout out maxdiff;
+
+    return 0;
+}
+
+// More complex method : DP on Trees
+
 #include <bits/stdc++.h>
 using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tiille(NULL); cout.tie(NULL);
