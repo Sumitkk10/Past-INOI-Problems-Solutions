@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+// Thanks to Saarang Srinivasan ( saarang123 ) for explaining this very elaborately
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 typedef long long int ll;
@@ -48,7 +52,7 @@ int main() {
         fo(i,1,n){
             fo(j,1,m){
                 maxdp[i][j][0] = presum[i][j] + maxdp[i-1][j][0];
-                mindp[i][j][0] = presum[i][j-1] + mindp[i-1][j][0];
+                mindp[i][j][0] = presum[i][j] - grid[i][j] + mindp[i-1][j][0];
             }
         }
 
@@ -58,7 +62,7 @@ int main() {
             fo(j,1,m){
                 fo(p,1,k){
                     maxdp[i][j][p] = presum[i][j] + max(maxdp[i-1][j-1][p-1],maxdp[i-1][j][p]);
-                    mindp[i][j][p] = presum[i][j-1] + min(mindp[i-1][j-1][p-1],mindp[i-1][j][p]);
+                    mindp[i][j][p] = presum[i][j]  - grid[i][j] + min(mindp[i-1][j-1][p-1],mindp[i-1][j][p]);
                 }
             }
         }
