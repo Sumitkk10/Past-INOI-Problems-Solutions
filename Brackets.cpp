@@ -40,7 +40,9 @@ int main() {
     // base case :
 
     fo(i,1,n){
-        fo(j,1,i-1) dp[i][j] = 1;
+        fo(j,1,i-1) {
+            dp[i][j] = -1;
+        }
     }
     fo(i,1,n) dp[i][i]= 0;
     fo(i,1,n-1){
@@ -58,13 +60,13 @@ int main() {
         while(j <= n){
 
             if(bracket[j]-bracket[i] == k){
-                dp[i][j] = value[i]+value[j]+dp[i-1][j-1];
+                dp[i][j] = value[i]+value[j]+dp[i+1][j-1];
             }
             else{
                 dp[i][j] = max(dp[i][j-1],dp[i+1][j]);
             }
 
-            fo(m,i+1,j-1){
+            fo(m,i+1,j){
                 mmax(dp[i][j],dp[i][m-1]+dp[m][j]);
             }
 
