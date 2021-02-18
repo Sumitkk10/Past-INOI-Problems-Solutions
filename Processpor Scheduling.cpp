@@ -49,7 +49,6 @@ int main() {
         sort(pjob.begin()+1,pjob.begin()+m+1);
         fo(i,1,m) swap(pjob[i][0],pjob[i][1]);
 
-
         // dp[i][j] = minimum time required to complete the first i classified jobs and first j public jobs
 
         // base case :
@@ -67,6 +66,7 @@ int main() {
                 }
 
                 /*
+                
                  If we do the public job
 
                  pjob[j][0] = p[j]
@@ -100,7 +100,7 @@ int main() {
                 ll p = pjob[j][0];
                 ll t = pjob[j][1];
 
-                if (t < dp[i][j - 1]) cost = INF;
+                if (t < dp[i][j - 1]) continue;
                 else if (dp[i][j - 1] + p <= t) cost = t;
                 else if (dp[i][j - 1] + p > t) cost = dp[i][j - 1] + p;
 
