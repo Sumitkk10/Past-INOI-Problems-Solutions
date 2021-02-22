@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <set>
 using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 typedef long long int ll;
@@ -34,6 +37,8 @@ int main() {
     vi a(n+5);
     vi b(n+5);
     vi presum(n+5);
+    vi diff1(n+5,-INF);
+    vi diff2(n+5,-INF);
 
     fo(i,1,n) {
         cin in a[i];
@@ -42,28 +47,17 @@ int main() {
     fo(i,1,n) {
         cin in b[i];
         presum[i] = presum[i-1] + b[i];
+        diff1[i] = max(diff1[i-1] , a[i] - presum[i]);
+        diff2[i] = max(diff2[i-1] , a[i] + presum[i-1]);
     }
 
     // i...j
 
-    vi dp1(n+5);
+    fo(i,1,n) mmax(ans,a[i] + presum[i-1] + diff1[i-1]);
 
-    dp1[1] = a[1];
-    dp1[2] = a[1] + a[2];
+    // j...i
 
-    fo(i,3,n){
-        dp1[i] = max(dp1[i-1] + a[i] + b[i-1] - a[i-1],a[i-1] + a[i]);
-        mmax(ans,dp1[i]);
-    }
-
-    if(n <= 3000) {
-
-        fo(i, 1, n) {
-            fo(j, 1, n) {
-                if(i > j)mmax(ans, a[i] + a[j] + presum[n] - presum[i] + presum[j-1]);
-            }
-        }
-    }
+    fo(i,1,n) mmax(ans , presum[n] - presum[i] + a[i] + diff2[i-1]);
 
     cout out ans;
 
