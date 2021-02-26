@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 typedef long long int ll;
@@ -75,23 +73,22 @@ int main() {
             }
         }
 
-        
-            ll low = ans;
-            ll high = n - 1;
-            ll an = ans;
+        ll low = ans;
+        ll high = n - 1;
+        ll an = ans;
 
-            while (low <= high) {
+        while (low <= high) {
 
-                ll mid = (low + high) / 2;
-                if (isPossible(mid) == true) {
-                    low = mid + 1;
-                    an = mid;
-                } else {
-                    high = mid - 1;
-                }
+            ll mid = (low + high) / 2;
+            if (isPossible(mid) == true) {
+                low = mid + 1;
+                an = mid;
+            } else {
+                high = mid - 1;
             }
+        }
 
-            mmax(ans,an);
+        mmax(ans,an);
         
 
         cout out ans nextline;
